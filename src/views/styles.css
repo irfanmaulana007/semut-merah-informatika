@@ -1,0 +1,134 @@
+.content {
+    padding: 80px 0;
+}
+
+hr.underline { border-top: 2px solid rgba(0, 0, 0, .2); }
+hr.underline.b1 { border-top: 1px solid rgba(0, 0, 0, .2); }
+hr.underline { width: 100px; }
+hr.underline.light { border-color: #f8f9fa!important; }
+
+.bg-section-2 {
+    background-color: #f6f6f6;
+}
+.bg-section {
+    background-image: url('../assets/bg.png');
+    background-position: left;
+    height: 160px;
+    /* width: 100%; */
+    margin-left: -10px;
+}
+.bg-section.flipY {
+    transform: scaleY(-1);
+}
+
+/* Home */
+.background1{
+    background-image: url('../assets/bg1.jpg');
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.intro{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    /* margin: -44px 0 0 -170px; */
+}
+.intro h2 { letter-spacing: 1px; word-spacing: 2px; margin: auto; }
+.intro h2 span { font-weight: 800; }
+/* End of Home */
+
+/* Services */
+#services svg {
+    border: 2px solid #ddd;
+    padding: 12px;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    transition: .2s ease;
+}
+#services svg, #services h5 { color: #ddd; transition: .2s ease; }
+#services a:hover svg{ border-color: #d20023!important; color: #fff; }
+#services a:hover h5{ color: #fff!important; }
+#services a:hover h5 span{ color: #d20023!important; }
+.background2{
+    background-image: url('../assets/bg2.jpg');
+    width: 100%;
+}
+/* End of Services */
+
+#clients img {
+    width: 80%;
+    max-height: 200px;
+    line-height: 200px;
+}
+
+#clients #images {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#clients #images [class*="col"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.parallax {
+    width: 100%;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* Animate CSS */
+.tr-1 { transition: opacity 1s ease .1s, transform 1s ease .1s; }
+.tr-2 { transition: opacity 1s ease .2s, transform 1s ease .2s; }
+.tr-3 { transition: opacity 1s ease .3s, transform 1s ease .3s; }
+.tr-4 { transition: opacity 1s ease .4s, transform 1s ease .4s; }
+.tr-5 { transition: opacity 1s ease .5s, transform 1s ease .5s; }
+
+.slideLeft {
+    opacity: 0;
+    transform: translateX(40%);
+}
+.slideLeft.enter {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slideRight {
+    opacity: 0;
+    transform: translateX(-40%);
+}
+.slideRight.enter {
+    opacity: 1;
+    transform: translateX(0);
+}
+  
+.slideUp {
+    opacity: 0;
+    transform: translateY(40%);
+}
+.slideUp.enter {
+    opacity: 1;
+    transform: translateY(0);
+}  
+
+.slideDown {
+    opacity: 0;
+    transform: translateY(4-0%);
+}
+.slideDown.enter {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* End of Animate CSS */
