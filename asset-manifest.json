@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/semut-merah-informatika/static/css/main.6ca9c12e.chunk.css",
+    "main.js": "/semut-merah-informatika/static/js/main.0e7f778e.chunk.js",
+    "main.js.map": "/semut-merah-informatika/static/js/main.0e7f778e.chunk.js.map",
+    "runtime-main.js": "/semut-merah-informatika/static/js/runtime-main.d3c04cca.js",
+    "runtime-main.js.map": "/semut-merah-informatika/static/js/runtime-main.d3c04cca.js.map",
+    "static/css/2.d729c219.chunk.css": "/semut-merah-informatika/static/css/2.d729c219.chunk.css",
+    "static/js/2.02c49981.chunk.js": "/semut-merah-informatika/static/js/2.02c49981.chunk.js",
+    "static/js/2.02c49981.chunk.js.map": "/semut-merah-informatika/static/js/2.02c49981.chunk.js.map",
+    "index.html": "/semut-merah-informatika/index.html",
+    "precache-manifest.d7c740d4a9226f3a9565914e4361be45.js": "/semut-merah-informatika/precache-manifest.d7c740d4a9226f3a9565914e4361be45.js",
+    "service-worker.js": "/semut-merah-informatika/service-worker.js",
+    "static/css/2.d729c219.chunk.css.map": "/semut-merah-informatika/static/css/2.d729c219.chunk.css.map",
+    "static/css/main.6ca9c12e.chunk.css.map": "/semut-merah-informatika/static/css/main.6ca9c12e.chunk.css.map",
+    "static/js/2.02c49981.chunk.js.LICENSE.txt": "/semut-merah-informatika/static/js/2.02c49981.chunk.js.LICENSE.txt",
+    "static/media/amman_mineral_logo.png": "/semut-merah-informatika/static/media/amman_mineral_logo.fff8f0fc.png",
+    "static/media/styles.css": "/semut-merah-informatika/static/media/bg2.514cba5b.jpg",
+    "static/media/bpjs_logo.png": "/semut-merah-informatika/static/media/bpjs_logo.d940d904.png",
+    "static/media/bpk_logo.png": "/semut-merah-informatika/static/media/bpk_logo.9f101b42.png",
+    "static/media/braincode_logo.png": "/semut-merah-informatika/static/media/braincode_logo.d7faf9fc.png",
+    "static/media/bri_logo.png": "/semut-merah-informatika/static/media/bri_logo.964a33b8.png",
+    "static/media/btpn_logo.png": "/semut-merah-informatika/static/media/btpn_logo.16c9314d.png",
+    "static/media/indokordsa_logo.png": "/semut-merah-informatika/static/media/indokordsa_logo.181c33ed.png",
+    "static/media/kemdiknas_logo.png": "/semut-merah-informatika/static/media/kemdiknas_logo.1cff49c0.png",
+    "static/media/mandiri_logo.png": "/semut-merah-informatika/static/media/mandiri_logo.7044e758.png",
+    "static/media/pertamina_logo.png": "/semut-merah-informatika/static/media/pertamina_logo.ef761e41.png",
+    "static/media/rs_indramayu_logo.png": "/semut-merah-informatika/static/media/rs_indramayu_logo.53d348d3.png",
+    "static/media/siloam_logo.png": "/semut-merah-informatika/static/media/siloam_logo.9613c6e0.png",
+    "static/media/smi_logo_small.png": "/semut-merah-informatika/static/media/smi_logo_small.65a2728e.png",
+    "static/media/toyota_logo.png": "/semut-merah-informatika/static/media/toyota_logo.8e8fddd2.png",
+    "static/media/tugu_logo.png": "/semut-merah-informatika/static/media/tugu_logo.66cdc2fb.png",
+    "static/media/utpe_logo.png": "/semut-merah-informatika/static/media/utpe_logo.df841f70.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3c04cca.js",
+    "static/css/2.d729c219.chunk.css",
+    "static/js/2.02c49981.chunk.js",
+    "static/css/main.6ca9c12e.chunk.css",
+    "static/js/main.0e7f778e.chunk.js"
+  ]
+}
