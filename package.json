@@ -2,7 +2,6 @@
   "name": "semut-merah-informatika",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://irfanmaulana007.github.io/semut-merah-informatika",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",

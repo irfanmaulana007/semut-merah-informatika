@@ -23,6 +23,7 @@ hr.underline.light { border-color: #f8f9fa!important; }
 
 /* Home */
 .background1{
+    /* https://unsplash.com/photos/NuFUbftUu_s */
     background-image: url('../assets/bg1.jpg');
     position: absolute;
     height: 100%;
@@ -55,6 +56,7 @@ hr.underline.light { border-color: #f8f9fa!important; }
 #services a:hover h5{ color: #fff!important; }
 #services a:hover h5 span{ color: #d20023!important; }
 .background2{
+    /* https://unsplash.com/photos/f77Bh3inUpE */
     background-image: url('../assets/bg2.jpg');
     width: 100%;
 }
