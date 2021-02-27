@@ -1,8 +1,11 @@
 .h-100 { height: 100%!important; }
 
+.btn-theme { background-color: #d20023!important; color: #fff!important; }
+.btn-theme:hover { background-color: #b3001e!important; color: #fff!important; }
 .bg-theme { background-color: #d20023!important; }
 .text-theme { color: #d20023!important; }
 hr.underline { border-color: #d20023!important; }
+.no-border-radius { border-radius: 0!important; }
 
 html, body, #app, #app>div {
   height: 100%;

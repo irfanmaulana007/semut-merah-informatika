@@ -38,6 +38,7 @@ class Navigation extends Component {
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto text-uppercase small">
 							<a href="/#about" className="nav-link ml-2 mr-2" activeClassName="active">About</a>
+							<a href="/events" className="nav-link ml-2 mr-2">Events</a>
 							<a href="/#services" className="nav-link ml-2 mr-2">Services</a>
 							<a href="/#clients" className="nav-link ml-2 mr-2">Clients</a>
 							<a href="/#contact" className="nav-link ml-2 mr-2">Contact</a>

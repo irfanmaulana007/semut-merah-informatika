@@ -90,6 +90,11 @@ hr.underline.light { border-color: #f8f9fa!important; }
     background-size: cover;
 }
 
+/* Events */
+#events button:focus { box-shadow: none; }
+
+/* End of Events */
+
 
 /* Animate CSS */
 .tr-1 { transition: opacity 1s ease .1s, transform 1s ease .1s; }
