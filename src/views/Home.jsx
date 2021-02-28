@@ -7,7 +7,7 @@ class Home extends Component {
 	render () {
 		return (
 			<div id="home" className="content bg-dark text-light h-100 p-0">
-				<Navigation />
+				<Navigation module="index" />
 				<div className="container">
 					<div className="background1 parallax"></div>
 

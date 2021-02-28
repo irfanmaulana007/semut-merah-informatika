@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { Breadcrumb } from 'react-bootstrap';
+import Moment from 'react-moment';
+import moment from 'moment';
+import _ from 'lodash';
 
-import { EventService } from './../../commons/api.service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faVideo } from '@fortawesome/free-solid-svg-icons';
+
 import store from './../../store';
 import { startLoading, stopLoading } from './../../actions';
+
+import { EventService, OccupationService } from './../../commons/api.service';
+import { convertIntegerToCurrency } from './../../commons/utilities';
+import ModalRegister from './../../components/modals/Register';
 
 // Component
 import Navigation from './../../components/Navigation';
@@ -19,8 +27,12 @@ export default class EventDetail extends Component {
             event: {
                 contact_persons: [],
                 facilities: [],
-                fees: []
-            }
+                fees: [],
+                event_speaker_activities: [],
+                datetimes: []
+            },
+            occupationList: [],
+            isModalShow: false
         }
     }
 
@@ -31,24 +43,25 @@ export default class EventDetail extends Component {
         .finally(() => store.dispatch(stopLoading()));
     }
 
-    componentDidMount () {
-		var nav = document.getElementById('nav');
-        
-        nav.classList.add('fixed-top')
-        nav.classList.add('bg-light')
-        nav.classList.add('navbar-light')
-        nav.classList.remove('navbar-dark')
-
-        this.fetchEventDetail();
+    fetchOccupations = () => {
+        OccupationService.get()
+        .then((res) => this.setState({ occupationList: res.data.data }))
     }
 
+    componentDidMount () {
+        this.fetchEventDetail();
+        this.fetchOccupations();
+    }
+
+    handleShowModal = () => { this.setState({ isModalShow: true }) }
+    handleCloseModal = () => { this.setState({ isModalShow: false }) }
+
     render () {
-        const { event } = this.state;
+        const { event, isModalShow } = this.state;
 
         return (
 			<div className="h-100">
 				<Navigation />
-                <br/><br/>
 
                 <div id="eventDetail" className="container content">
                     <div className="row">
@@ -58,42 +71,104 @@ export default class EventDetail extends Component {
                                 <Breadcrumb.Item href="/events">
                                     Events
                                 </Breadcrumb.Item>
-                                <Breadcrumb.Item active>Data</Breadcrumb.Item>
+                                <Breadcrumb.Item active>{event.name}</Breadcrumb.Item>
                             </Breadcrumb>
                         </div>
                     </div>
 
                     <div className="row">
                         <div className="col">
-                            <h5><b>{event.name}</b></h5>
                             <img src={event.img_url} alt="banner"/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-8 pr-4">
+                            <h5><b>{event.name}</b></h5>
 
                             <p>{event.description}</p>
 
-                            <h6 className="mb-1"><b>Prasyarat Peserta</b></h6>
+                            <h6 className="mb-1"><b>Pre-condition</b></h6>
                             <p>{event.precondition}</p>
 
-                            <h6 className="mb-1"><b>Kapasitas</b></h6>
-                            <p>{event.capacity} orang</p>
+                            <h6 className="mb-1"><b>Facilities</b></h6>
+                            <ul>
+                                {event.facilities.map((values, key) =>
+                                    <li key={key}>{values.description}</li>
+                                )}
+                            </ul>
 
-                            <h6 className="mb-1"><b>Kontak</b></h6>
-                            {event.contact_persons.map((values, key) =>
-                                <p key={key}>{values.name}: {values.contact}</p>
+                            <h6 className="mb-1"><b>Speakers</b></h6>
+                            <ul>
+                                {event.event_speaker_activities.map((values, key) =>
+                                    <li className="mt-1 mb-0 text-capitalize" key={key}>{values.speaker.name}</li>
+                                )}
+                            </ul>
+                        </div>
+
+                        <div className="col-4 pl-4">
+                            {event.datetimes.map((values, key) =>
+                                <p className="mb-1" key={key}>
+                    				<FontAwesomeIcon className="mr-3" icon={faClock} />
+                                    <Moment format="ddd, DD MMMM">{values.date}</Moment>:&nbsp;
+                                    {moment(values.start_time, 'HH:mm:ss').format('hh:mm A')} WIB
+                                </p>
                             )}
+                            <br/>
 
-                            <h6 className="mb-1"><b>Registrasi</b></h6>
-                            <h6 className="mb-1">Investasi</h6>
+                            {event.location === 'online'
+                                ? 
+                                <div>
+                                    <FontAwesomeIcon className="mr-3" icon={faVideo} /> Online Events
+                                    <p className="small mt-1 mb-0">*Link will be given on email</p>
+                                </div>
+                                :
+                                <div>
+                                    <FontAwesomeIcon className="mr-3" icon={faClock} /> {event.location}
+                                </div>
+                            }
+                            <br/>
+
+                            <h6 className="mb-2">Registration</h6>
                             {event.fees.map((values, key) =>
-                                <p key={key}>{values.fee_type_id}: {values.amount}</p>
+                                <p className="mt-1 mb-0" key={key}><b>{values.fee_type.name}</b>: {convertIntegerToCurrency(values.amount)}</p>
                             )}
-                            <h6 className="mb-1">Fasilitas</h6>
-                            {event.facilities.map((values, key) =>
-                                <p key={key}>{values.description}</p>
-                            )}
+                            {_.get(_.find(event.fees, ['fee_type_id', 1]), 'amount') !== 0 && <p className="small mt-1 mb-0">*Early Bird until <Moment format="DD MMMM">{_.get(_.find(event.fees, ['fee_type_id', 1]), 'end_date', '')}</Moment></p>}
+                            <br/>
 
+                            <h6 className="mb-2">Contact</h6>
+                            {event.contact_persons.map((values, key) =>
+                                <p className="m-0" key={key}>{values.contact} ({values.name})</p>
+                            )}
+                            <br/>
+
+                            {event.capacity &&
+                                <div>
+                                    <h6 className="mb-2">Capacity</h6>
+                                    <p className="m-0">{event.capacity} person(s)</p>
+                                    <br/>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    
+                    <br/><br/>
+                    <div className="row">
+                        <div className="col-6 offset-3">
+                            <button className="btn btn-theme btn-sm btn-block font-weight-bold" onClick={this.handleShowModal} disabled={_.get(event.datetimes[0], 'date') < moment().format('YYYY-MM-DD')}>Register</button>
                         </div>
                     </div>
                 </div>
+
+                { 
+                    isModalShow &&
+                    <ModalRegister
+                        isModalShow={isModalShow}
+                        handleCloseModal={this.handleCloseModal}
+                        occupationList={this.state.occupationList}
+                        eventId={this.state.eventNo}
+                        eventDetail={this.state.event}
+                    />
+                }
 
                 <br/><br/>
                 <Footer />

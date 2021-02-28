@@ -9,3 +9,10 @@ export const stopLoading = () => {
 		type: "STOP_LOADING"
 	}
 }
+
+export const formErrorHandler = (field) => {
+	return {
+		type: "FORM_ERROR_HANDLER",
+		payload: field
+	}
+}

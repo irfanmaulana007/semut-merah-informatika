@@ -125,3 +125,58 @@ export const EventService = {
 			.delete('events/' + id)
 	},
 }
+
+export const OccupationService = {
+	get () {
+		return apiService
+			.get('occupations')
+	},
+    
+	detail (id) {
+		return apiService
+			.get('occupations/' + id)
+	},
+    
+	create (payload) {
+		return apiService
+			.post('occupations', payload)
+	},
+    
+	update (id, payload) {
+		return apiService
+			.put('occupations/' + id, payload)
+	},
+    
+	delete (id) {
+		return apiService
+			.delete('occupations/' + id)
+	},
+}
+
+
+export const EventRegistrationService = {
+	get () {
+		return apiService
+			.get('event-registration')
+	},
+    
+	detail (id) {
+		return apiService
+			.get('event-registration/' + id)
+	},
+    
+	create (payload) {
+		return apiService
+			.post('event-registration', payload)
+	},
+    
+	update (id, payload) {
+		return apiService
+			.put('event-registration/' + id, payload)
+	},
+    
+	delete (id) {
+		return apiService
+			.delete('event-registration/' + id)
+	},
+}

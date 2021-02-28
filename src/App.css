@@ -6,6 +6,9 @@
 .text-theme { color: #d20023!important; }
 hr.underline { border-color: #d20023!important; }
 .no-border-radius { border-radius: 0!important; }
+.row { margin: 0!important; }
+button { padding: 10px 30px!important; }
+.text-black { color: #000!important; }
 
 html, body, #app, #app>div {
   height: 100%;

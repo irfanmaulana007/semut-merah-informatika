@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { ButtonGroup } from 'react-bootstrap';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 import { EventService } from './../../commons/api.service';
 import store from './../../store';
@@ -27,13 +29,6 @@ export default class Event extends Component {
     }
 
     componentDidMount () {
-		var nav = document.getElementById('nav');
-        
-        nav.classList.add('fixed-top')
-        nav.classList.add('bg-light')
-        nav.classList.add('navbar-light')
-        nav.classList.remove('navbar-dark')
-
         this.fetchEvents(this.state.eventNavActive);
     }
 
@@ -65,10 +60,12 @@ export default class Event extends Component {
                             <div key={key} className="col-4">
                                 <Link className="text-dark text-decoration-none" to={`/events/detail?eventNo=${values.id}`}>
                                     <div className="border p-3">
-                                        <h6>{values.name}</h6>
-                                        <h6>{values.description}</h6>
-                                        <h6>{values.preconditions}</h6>
-                                        <h6>{values.capacity}</h6>
+                                        <img src={values.img_url} alt="banner"/>
+                                        <div className="text-theme mt-2">
+                                            <Moment format="dddd, DD MMMM YYYY">{values.datetimes[0].date}</Moment> &nbsp;
+                                            {moment(values.datetimes[0].start_time, 'HH:mm:ss').format('hh:mm A')} WIB
+                                        </div>
+                                        <h6 className="mt-2 font-weight-bolder">{values.name}</h6>
                                     </div>
                                 </Link>
                             </div>

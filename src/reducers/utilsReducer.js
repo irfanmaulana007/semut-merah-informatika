@@ -1,6 +1,7 @@
 const initialState = {
 	loaders: "invisible",
-	message: ""
+	message: "",
+	formError: ""
 }
 
 export default function utilsReducer(state = initialState, action) {
@@ -17,6 +18,12 @@ export default function utilsReducer(state = initialState, action) {
 				...state,
 				loaders: "invisible",
 				message: ""
+			}
+
+		case "FORM_ERROR_HANDLER":
+			return {
+				...state,
+				formError: action.payload
 			}
 			
 		default: return state;
