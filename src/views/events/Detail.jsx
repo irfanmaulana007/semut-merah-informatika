@@ -11,6 +11,7 @@ import { faClock, faVideo } from '@fortawesome/free-solid-svg-icons';
 import store from './../../store';
 import { startLoading, stopLoading } from './../../actions';
 
+import { IMG_URL } from './../../commons/config';
 import { EventService, OccupationService } from './../../commons/api.service';
 import { convertIntegerToCurrency } from './../../commons/utilities';
 import ModalRegister from './../../components/modals/Register';
@@ -66,7 +67,6 @@ export default class EventDetail extends Component {
                 <div id="eventDetail" className="container content">
                     <div className="row">
                         <div className="col">
-                            {/* <Link to ="/events">Event</Link> */}
                             <Breadcrumb>
                                 <Breadcrumb.Item href="/events">
                                     Events
@@ -78,16 +78,18 @@ export default class EventDetail extends Component {
 
                     <div className="row">
                         <div className="col">
-                            <img src={event.img_url} alt="banner"/>
+                            <img src={IMG_URL + event.img_url} alt="banner" width="100%" />
                         </div>
                     </div>
+                    <br/>
+                    
                     <div className="row">
                         <div className="col-8 pr-4">
                             <h5><b>{event.name}</b></h5>
 
                             <p>{event.description}</p>
 
-                            <h6 className="mb-1"><b>Pre-condition</b></h6>
+                            <h6 className="mb-1"><b>Pre-requisites</b></h6>
                             <p>{event.precondition}</p>
 
                             <h6 className="mb-1"><b>Facilities</b></h6>

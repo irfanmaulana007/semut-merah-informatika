@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { Navbar, Nav } from 'react-bootstrap';
 
@@ -55,7 +56,7 @@ class Navigation extends Component {
 							<a href="/#services" className="nav-link ml-2 mr-2">Services</a>
 							<a href="/#clients" className="nav-link ml-2 mr-2">Clients</a>
 							<a href="/#contact" className="nav-link ml-2 mr-2">Contact</a>
-							<a href="/events" className="nav-link ml-2 mr-2">Events</a>
+							<NavLink to="/events" activeClassName="active" className="nav-link ml-2 mr-2">Events</NavLink>
 						</Nav>
 					</Navbar.Collapse>
 				</div>

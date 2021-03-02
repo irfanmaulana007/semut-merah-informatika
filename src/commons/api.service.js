@@ -180,3 +180,10 @@ export const EventRegistrationService = {
 			.delete('event-registration/' + id)
 	},
 }
+
+export const MailService = {
+	sendPaymentInstruction (payload) {
+		return apiService
+			.post('email/payment', payload)
+	}
+}

@@ -4,6 +4,7 @@ import { ButtonGroup } from 'react-bootstrap';
 import Moment from 'react-moment';
 import moment from 'moment';
 
+import { IMG_URL } from './../../commons/config';
 import { EventService } from './../../commons/api.service';
 import store from './../../store';
 import { startLoading, stopLoading } from './../../actions';
@@ -59,13 +60,15 @@ export default class Event extends Component {
                         {eventList.map((values, key) =>
                             <div key={key} className="col-4">
                                 <Link className="text-dark text-decoration-none" to={`/events/detail?eventNo=${values.id}`}>
-                                    <div className="border p-3">
-                                        <img src={values.img_url} alt="banner"/>
-                                        <div className="text-theme mt-2">
-                                            <Moment format="dddd, DD MMMM YYYY">{values.datetimes[0].date}</Moment> &nbsp;
-                                            {moment(values.datetimes[0].start_time, 'HH:mm:ss').format('hh:mm A')} WIB
+                                    <div className="border">
+                                        <img src={IMG_URL + values.img_url} alt="banner" width="100%" />
+                                        <div className="p-3">
+                                            <div className="text-theme mt-2">
+                                                <Moment format="dddd, DD MMMM YYYY">{values.datetimes[0].date}</Moment> &nbsp;
+                                                {moment(values.datetimes[0].start_time, 'HH:mm:ss').format('hh:mm A')} WIB
+                                            </div>
+                                            <h6 className="mt-2 font-weight-bolder">{values.name}</h6>
                                         </div>
-                                        <h6 className="mt-2 font-weight-bolder">{values.name}</h6>
                                     </div>
                                 </Link>
                             </div>
