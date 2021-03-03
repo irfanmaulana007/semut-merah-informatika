@@ -32,6 +32,7 @@ export default class EventDetail extends Component {
                 event_speaker_activities: [],
                 datetimes: []
             },
+            isTicketAvailable: false,
             occupationList: [],
             isModalShow: false
         }
@@ -40,7 +41,7 @@ export default class EventDetail extends Component {
     fetchEventDetail = () => {
         store.dispatch(startLoading('Load Event Detail . . .'));
         EventService.detail(this.state.eventNo)
-        .then((res) => this.setState({ event: res.data.data }))
+        .then((res) => this.setState({ event: res.data.data.event, isTicketAvailable: res.data.data.status }))
         .finally(() => store.dispatch(stopLoading()));
     }
 
@@ -58,7 +59,7 @@ export default class EventDetail extends Component {
     handleCloseModal = () => { this.setState({ isModalShow: false }) }
 
     render () {
-        const { event, isModalShow } = this.state;
+        const { event, isTicketAvailable, isModalShow } = this.state;
 
         return (
 			<div className="h-100">
@@ -84,7 +85,7 @@ export default class EventDetail extends Component {
                     <br/>
                     
                     <div className="row">
-                        <div className="col-8 pr-4">
+                        <div className="col-md-8 pr-4">
                             <h5><b>{event.name}</b></h5>
 
                             <p>{event.description}</p>
@@ -102,12 +103,12 @@ export default class EventDetail extends Component {
                             <h6 className="mb-1"><b>Speakers</b></h6>
                             <ul>
                                 {event.event_speaker_activities.map((values, key) =>
-                                    <li className="mt-1 mb-0 text-capitalize" key={key}>{values.speaker.name}</li>
+                                    <li className="mt-1 mb-0 text-capitalize" key={key}>{values.speaker.name} (Data Scientist) <a href={values.speaker.linkedin} rel="noopener noreferrer" target="_blank">Linkedin Profile</a></li>
                                 )}
                             </ul>
                         </div>
 
-                        <div className="col-4 pl-4">
+                        <div className="col-md-4 pl-4">
                             {event.datetimes.map((values, key) =>
                                 <p className="mb-1" key={key}>
                     				<FontAwesomeIcon className="mr-3" icon={faClock} />
@@ -139,7 +140,7 @@ export default class EventDetail extends Component {
 
                             <h6 className="mb-2">Contact</h6>
                             {event.contact_persons.map((values, key) =>
-                                <p className="m-0" key={key}>{values.contact} ({values.name})</p>
+                                <p className="m-0" key={key}>+62 {values.contact} (SMI Training Center)</p>
                             )}
                             <br/>
 
@@ -156,7 +157,10 @@ export default class EventDetail extends Component {
                     <br/><br/>
                     <div className="row">
                         <div className="col-6 offset-3">
-                            <button className="btn btn-theme btn-sm btn-block font-weight-bold" onClick={this.handleShowModal} disabled={_.get(event.datetimes[0], 'date') < moment().format('YYYY-MM-DD')}>Register</button>
+                            <button className="btn btn-theme btn-sm btn-block font-weight-bold" onClick={this.handleShowModal} 
+                            disabled={_.get(event.datetimes[0], 'date') < moment().format('YYYY-MM-DD') || !isTicketAvailable}>
+                                {isTicketAvailable ? 'Register' : 'Fully Booked'}
+                            </button>
                         </div>
                     </div>
                 </div>

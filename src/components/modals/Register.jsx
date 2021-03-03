@@ -49,7 +49,7 @@ export default class ModalRegister extends Component {
             EventRegistrationService.create(this.state)
             .then((res) => {
                 MailService.sendPaymentInstruction(res.data);
-                swal("Register success (" + res.data.data.code + ")", "We send you the invitation link on your email", "success");
+                swal("Register success", "We send you the invitation link on your email", "success");
                 this.props.handleCloseModal();
             } )
             .finally(() => store.dispatch(stopLoading()));
@@ -58,6 +58,7 @@ export default class ModalRegister extends Component {
 
     render() {
         const { payment_amount } = this.state;
+
         const { name, description, location, facilities, datetimes } = this.props.eventDetail;
 
         return (
@@ -75,53 +76,58 @@ export default class ModalRegister extends Component {
                 
                 <Modal.Body className="p-0">
                     <div className="row">
-                        <div className="col-8 p-0">
-                            <div className="pl-5 pr-5 pt-2 pb-2">
-                                <label htmlFor='occupation' className="text-uppercase text-muted small"><b>Occupation <span className="text-danger">*</span> </b></label>
-                                <select id="occupation" name="occupation_id" ref={el => (this.occupation = el)} className="form-control" onChange={this.handleChange} >
-                                    <option value="0">Select</option>
-                                    {this.props.occupationList.map((values, key) =>
-                                        <option key={key} value={values.id}>{values.name}</option>
-                                    )}
-                                </select>
-                                <br />
+                        <div className="col-md-8 order-last order-md-first p-0">
+                            <div className="pt-4 pb-2">
+                                <div className="container">
+                                    <label htmlFor='occupation' className="text-uppercase text-muted small"><b>Occupation <span className="text-danger">*</span> </b></label>
+                                    <select id="occupation" name="occupation_id" ref={el => (this.occupation = el)} className="form-control" onChange={this.handleChange} >
+                                        <option value="0">Select</option>
+                                        {this.props.occupationList.map((values, key) =>
+                                            <option key={key} value={values.id}>{values.name}</option>
+                                        )}
+                                    </select>
+                                    <br />
 
-                                <FormGroup name='name' required onChange={this.handleChange} />
-                                <FormGroup name='company' required onChange={this.handleChange} />
-                                <FormGroup name='email' required onChange={this.handleChange} />
-                                <FormGroup name='phone' required onChange={this.handleChange} />
+                                    <FormGroup name='name' required onChange={this.handleChange} />
+                                    <FormGroup name='company' required onChange={this.handleChange} />
+                                    <FormGroup name='email' required onChange={this.handleChange} />
+                                    <FormGroup name='phone' required onChange={this.handleChange} />
+                                </div>
                             </div>
 
                             <h6 className="text-danger small text-center mt-0">{store.getState().utils.formError}</h6>
 
                             <div className="row">
-                                <div className="col text-right pl-5 pr-5 pb-4">
+                                <div className="col text-right pb-5">
+                                    
                                     <button className="btn btn-theme btn-sm" onClick={this.doRegister}>Register</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="col-4 p-0 bg-light pl-5 pr-5 pt-3 pb-3">
-                            <h5 className="font-weight-bold">Event Overview</h5>
-                            <br/>
+                        <div className="col-md-4 order-first order-md-last p-0 bg-light pt-3 pb-3">
+                            <div className="container">
+                                <h5 className="font-weight-bold">Event Overview</h5>
+                                <br/>
 
-                            <h6>{description || <Skeleton />}</h6>
-                            <br/>
+                                <h6>{description || <Skeleton />}</h6>
+                                <br/>
 
-                            <h6 className="text-muted small mb-1">Location</h6>
-                            <h6>{location === 'online' ? 'Online Events' : location}</h6>
-                            <br/>
+                                <h6 className="text-muted small mb-1">Location</h6>
+                                <h6>{location === 'online' ? 'Online Events' : location}</h6>
+                                <br/>
 
-                            <h6 className="text-muted small mb-1">Facilities</h6>
-                            <ul className="pl-4">
-                                {facilities.map((values, key) => 
-                                    <li key={key}>{values.description}</li>
-                                )}
-                            </ul>
-                            <br/>
+                                <h6 className="text-muted small mb-1">Facilities</h6>
+                                <ul className="pl-4">
+                                    {facilities.map((values, key) => 
+                                        <li key={key}>{values.description}</li>
+                                    )}
+                                </ul>
+                                <br/>
 
-                            <div className="font-weight-bold text-right">
-                                <h5 className="mb-1">{convertIntegerToCurrency(payment_amount)}</h5>
+                                <div className="font-weight-bold text-right">
+                                    <h5 className="mb-1">{convertIntegerToCurrency(payment_amount)}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>

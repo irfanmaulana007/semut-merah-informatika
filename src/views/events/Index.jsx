@@ -49,7 +49,7 @@ export default class Event extends Component {
                 <div id="events" className="container content">
                     <div className="row">
                         <div className="col">
-                            <ButtonGroup aria-label="Basic example" className="w-100">
+                            <ButtonGroup className="w-100">
                                 <Link className="w-100 text-decoration-none" to="/events?eventType=1"><button onClick={() => this.handleClickNav(1)} className={`btn btn-block no-border-radius ` + (eventNavActive === 1 ? 'btn-theme' : 'btn-secondary')}>Upcoming Events</button></Link>
                                 <Link className="w-100 text-decoration-none" to="/events?eventType=2"><button onClick={() => this.handleClickNav(2)} className={`btn btn-block no-border-radius ` + (eventNavActive === 2 ? 'btn-theme' : 'btn-secondary')}>Past Events</button></Link>
                             </ButtonGroup>
@@ -58,7 +58,7 @@ export default class Event extends Component {
                     <br/>
                     <div className="row">
                         {eventList.map((values, key) =>
-                            <div key={key} className="col-4">
+                            <div key={key} className="col-md-4">
                                 <Link className="text-dark text-decoration-none" to={`/events/detail?eventNo=${values.id}`}>
                                     <div className="border">
                                         <img src={IMG_URL + values.img_url} alt="banner" width="100%" />
