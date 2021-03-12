@@ -113,7 +113,8 @@ export default class EventDetail extends Component {
                                 <p className="mb-1" key={key}>
                     				<FontAwesomeIcon className="mr-3" icon={faClock} />
                                     <Moment format="ddd, DD MMMM">{values.date}</Moment>:&nbsp;
-                                    {moment(values.start_time, 'HH:mm:ss').format('hh:mm A')} WIB
+                                    {moment(values.start_time, 'HH:mm:ss').format('hh:mm A')} -&nbsp;
+                                    {moment(values.end_time, 'HH:mm:ss').format('hh:mm A')} WIB
                                 </p>
                             )}
                             <br/>
@@ -140,7 +141,7 @@ export default class EventDetail extends Component {
 
                             <h6 className="mb-2">Contact</h6>
                             {event.contact_persons.map((values, key) =>
-                                <p className="m-0" key={key}>+62 {values.contact} (SMI Training Center)</p>
+                                <p className="m-0" key={key}>+62 {values.contact} ({values.name})</p>
                             )}
                             <br/>
 
