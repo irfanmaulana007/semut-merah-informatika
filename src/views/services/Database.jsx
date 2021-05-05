@@ -19,7 +19,7 @@ class Database extends Component {
 								<br/>
 								<div className={`row ` + (isVisible ? `slideUp enter tr-2` : `slideUp tr-2`)}>
 									<div className="col">
-										<p>An end-to-end data science service that helps you build or improve machine learning and optimization model with any platform that suits your company.</p>
+										{/* <p>An end-to-end data science service that helps you build or improve machine learning and optimization model with any platform that suits your company.</p> */}
 									</div>
 								</div>
 								<div className={`row ` + (isVisible ? `slideUp enter tr-3` : `slideUp tr-3`)}>
