@@ -4,16 +4,8 @@ import store from './../store';
 import { formErrorHandler } from './../actions';
 
 export const eventRegistration = (payload) => {
-	if (payload.occupation_id === 0) {
-		store.dispatch(formErrorHandler('*Occupation must be selected'));
-		return false;
-	}
 	if (payload.name === "") {
 		store.dispatch(formErrorHandler('*Nama must be filled'));
-		return false;
-	}
-	if (payload.company === "") {
-		store.dispatch(formErrorHandler('*Company must be filled'));
 		return false;
 	}
 	if (payload.email === "") {
@@ -22,6 +14,10 @@ export const eventRegistration = (payload) => {
 	}
 	if (payload.phone === "") {
 		store.dispatch(formErrorHandler('*Phone must be filled'));
+		return false;
+	}
+	if (payload.company === "") {
+		store.dispatch(formErrorHandler('*Company must be filled'));
 		return false;
 	}
 

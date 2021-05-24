@@ -185,5 +185,10 @@ export const MailService = {
 	sendPaymentInstruction (payload) {
 		return apiService
 			.post('email/payment', payload)
+	},
+
+	sendRegistrantInformation (payload) {
+		return apiService
+			.post('email/registrant', payload)
 	}
 }

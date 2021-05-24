@@ -14,22 +14,38 @@ import { convertIntegerToCurrency } from './../../commons/utilities';
 import FormGroup from './../utils/FormGroup';
 import { eventRegistration } from './../../commons/validation';
 
+const companyTypeOptions = [{id: 1, name: 'BUMN'}, {id: 2, name: 'Swasta'}]
+const educationOptions = [{id: 1, name: 'D3'}, {id: 2, name: 'S1'}, {id: 3, name: 'S2'}, {id: 4, name: 'S3'}]
 export default class ModalRegister extends Component {
     constructor(props) {
         super(props);
         this.state = {
             event_id: this.props.eventId,
-            occupation_id: 0,
             name: '',
-            company: '',
             email: '',
             phone: '',
+            education: 0,
+            company: '',
+            company_type: 0,
+            occupation_id: 0,
+            idcard: '',
             payment_amount: 0
         }
     }
 
+
+    handleDocumentClick = (e) => {
+        // on Enter button
+        if (e.keyCode === 13) { this.doRegister() }
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.handleDocumentClick, false);
+    }
+
     componentDidMount () {
-        this.occupation.focus();
+        document.getElementById('firstElement').focus()
+        document.addEventListener("keydown", this.handleDocumentClick, false);
 
         const { fees } =  this.props.eventDetail;
         const currentDate = new Date();
@@ -48,8 +64,8 @@ export default class ModalRegister extends Component {
             store.dispatch(startLoading('Register . . .'));
             EventRegistrationService.create(this.state)
             .then((res) => {
-                MailService.sendPaymentInstruction(res.data);
-                swal("Register success", "We send you the invitation link on your email", "success");
+                MailService.sendRegistrantInformation(res.data);
+                swal("Register success", "We'll send you the invitation link on your email", "success");
                 this.props.handleCloseModal();
             } )
             .finally(() => store.dispatch(stopLoading()));
@@ -59,6 +75,7 @@ export default class ModalRegister extends Component {
     render() {
         const { payment_amount } = this.state;
 
+        const { occupationList } = this.props
         const { name, description, location, facilities, datetimes } = this.props.eventDetail;
 
         return (
@@ -79,19 +96,10 @@ export default class ModalRegister extends Component {
                         <div className="col-md-8 order-last order-md-first p-0">
                             <div className="pt-4 pb-2">
                                 <div className="container">
-                                    <label htmlFor='occupation' className="text-uppercase text-muted small"><b>Occupation <span className="text-danger">*</span> </b></label>
-                                    <select id="occupation" name="occupation_id" ref={el => (this.occupation = el)} className="form-control" onChange={this.handleChange} >
-                                        <option value="0">Select</option>
-                                        {this.props.occupationList.map((values, key) =>
-                                            <option key={key} value={values.id}>{values.name}</option>
-                                        )}
-                                    </select>
-                                    <br />
-
-                                    <FormGroup name='name' required onChange={this.handleChange} />
+                                    <FormGroup id="firstElement" name='name' required autoFocus onChange={this.handleChange} />
+                                    <FormGroup name='email' label="email corporate" required onChange={this.handleChange} />
+                                    <FormGroup name='phone' label="phone (WA)" required onChange={this.handleChange} />
                                     <FormGroup name='company' required onChange={this.handleChange} />
-                                    <FormGroup name='email' required onChange={this.handleChange} />
-                                    <FormGroup name='phone' required onChange={this.handleChange} />
                                 </div>
                             </div>
 
