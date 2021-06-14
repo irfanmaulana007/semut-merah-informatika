@@ -54,7 +54,8 @@ class Navigation extends Component {
 						<Nav className="ml-auto text-uppercase small">
 							<a href="/#about" className="nav-link ml-2 mr-2" activeClassName="active">About</a>
 							<a href="/#services" className="nav-link ml-2 mr-2">Services</a>
-							<a href="/#clients" className="nav-link ml-2 mr-2">Clients</a>
+							{/* <a href="/#clients" className="nav-link ml-2 mr-2">Clients</a> */}
+							<a href="/#projects" className="nav-link ml-2 mr-2">Projects</a>
 							<a href="/#contact" className="nav-link ml-2 mr-2">Contact</a>
 							<NavLink to="/events" activeClassName="active" className="nav-link ml-2 mr-2">Events</NavLink>
 						</Nav>

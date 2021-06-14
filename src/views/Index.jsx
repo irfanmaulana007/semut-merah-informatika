@@ -8,6 +8,7 @@ import Database from './services/Database';
 import ITInfrastructure from './services/ITInfrastructure';
 import ProjectManagement from './services/ProjectManagement';
 import Client from './Client';
+import Project from './Project';
 import Contact from './Contact';
 import Footer from './../components/Footer';
 
@@ -27,7 +28,8 @@ class Index extends Component {
 				<ITInfrastructure />
 				<div className="bg-section flipY"></div>
 				<ProjectManagement />
-				<Client />
+				{/* <Client /> */}
+				<Project />
 				<Contact />
 				<Footer />
 			</div>

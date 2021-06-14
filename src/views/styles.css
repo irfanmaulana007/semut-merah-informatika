@@ -62,6 +62,12 @@ hr.underline.light { border-color: #f8f9fa!important; }
 }
 /* End of Services */
 
+/* Projects */
+#projects .btn:focus { box-shadow: none; text-decoration: none; }
+#projects .btn:hover { text-decoration: none; }
+
+/* End of Projects */
+
 #clients img {
     width: 80%;
     max-height: 200px;
