@@ -178,7 +178,7 @@ export default class Project extends Component {
 
 					<div className="row">
 						{projectList.map((values, key) => 
-							<div className="col-12">
+							<div className="col-12 p-0">
 								<ProjectComponent key={key} align={(key % 2 === 0) ? 'left' : 'right'} img={values.img} logo={values.logo} title={values.title} description={values.description} />
 							</div>
 						)}

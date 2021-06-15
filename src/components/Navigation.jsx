@@ -5,8 +5,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 import './styles.css';
 
-import SMILogo from './../assets/smi_logo_small.png';
-
 class Navigation extends Component {
 	handleNav = () => {
 		var nav = document.getElementById('nav');
@@ -48,14 +46,14 @@ class Navigation extends Component {
 		return (
 			<Navbar id="nav" fixed="top" variant="dark" expand="lg">
 				<div className="container">
-					<Navbar.Brand size="small" href="#home"><img src={SMILogo} alt="SMI Logo"/></Navbar.Brand>
+					<Navbar.Brand size="small" href="#home"><img src='./logo/smi_logo_small.png' alt="SMI Logo"/></Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto text-uppercase small">
 							<a href="/#about" className="nav-link ml-2 mr-2" activeClassName="active">About</a>
 							<a href="/#services" className="nav-link ml-2 mr-2">Services</a>
-							{/* <a href="/#clients" className="nav-link ml-2 mr-2">Clients</a> */}
-							<a href="/#projects" className="nav-link ml-2 mr-2">Projects</a>
+							<a href="/#clients" className="nav-link ml-2 mr-2">Clients</a>
+							{/* <a href="/#projects" className="nav-link ml-2 mr-2">Projects</a> */}
 							<a href="/#contact" className="nav-link ml-2 mr-2">Contact</a>
 							<NavLink to="/events" activeClassName="active" className="nav-link ml-2 mr-2">Events</NavLink>
 						</Nav>

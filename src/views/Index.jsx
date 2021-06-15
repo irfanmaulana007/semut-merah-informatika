@@ -28,8 +28,8 @@ class Index extends Component {
 				<ITInfrastructure />
 				<div className="bg-section flipY"></div>
 				<ProjectManagement />
-				{/* <Client /> */}
-				<Project />
+				<Client />
+				{/* <Project /> */}
 				<Contact />
 				<Footer />
 			</div>

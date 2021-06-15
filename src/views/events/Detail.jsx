@@ -134,7 +134,7 @@ export default class EventDetail extends Component {
 
                             <h6 className="mb-2">Registration</h6>
                             {event.fees.map((values, key) =>
-                                <p className="mt-1 mb-0" key={key}><b>{values.fee_type.name}</b>: {convertIntegerToCurrency(values.amount)}</p>
+                                <p className="mt-1 mb-0" key={key}><b>{values.fee_type.name}</b>: {(values.amount == 0) ? 'Free' : convertIntegerToCurrency(values.amount)}</p>
                             )}
                             {_.get(_.find(event.fees, ['fee_type_id', 1]), 'amount') !== 0 && <p className="small mt-1 mb-0">*Early Bird until <Moment format="DD MMMM">{_.get(_.find(event.fees, ['fee_type_id', 1]), 'end_date', '')}</Moment></p>}
                             <br/>

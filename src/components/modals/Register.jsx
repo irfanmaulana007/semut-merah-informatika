@@ -118,7 +118,7 @@ export default class ModalRegister extends Component {
                                 <h5 className="font-weight-bold">Event Overview</h5>
                                 <br/>
 
-                                <h6>{description || <Skeleton />}</h6>
+                                <h6 className="small">{description || <Skeleton />}</h6>
                                 <br/>
 
                                 <h6 className="text-muted small mb-1">Location</h6>
@@ -134,7 +134,7 @@ export default class ModalRegister extends Component {
                                 <br/>
 
                                 <div className="font-weight-bold text-right">
-                                    <h5 className="mb-1">{convertIntegerToCurrency(payment_amount)}</h5>
+                                    <h5 className="mb-1">{(payment_amount == 0) ? 'Free' : convertIntegerToCurrency(payment_amount)}</h5>
                                 </div>
                             </div>
                         </div>
