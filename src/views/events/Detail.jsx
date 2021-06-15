@@ -32,7 +32,7 @@ export default class EventDetail extends Component {
                 event_speaker_activities: [],
                 datetimes: []
             },
-            isTicketAvailable: false,
+            isTicketAvailable: true,
             occupationList: [],
             isModalShow: false
         }

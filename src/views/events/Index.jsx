@@ -50,8 +50,8 @@ export default class Event extends Component {
                     <div className="row">
                         <div className="col">
                             <ButtonGroup className="w-100">
-                                <Link className="w-100 text-decoration-none" to="/events?eventType=1"><button onClick={() => this.handleClickNav(1)} className={`btn btn-block no-border-radius ` + (eventNavActive === 1 ? 'btn-theme' : 'btn-secondary')}>Upcoming Events</button></Link>
-                                <Link className="w-100 text-decoration-none" to="/events?eventType=2"><button onClick={() => this.handleClickNav(2)} className={`btn btn-block no-border-radius ` + (eventNavActive === 2 ? 'btn-theme' : 'btn-secondary')}>Past Events</button></Link>
+                                <Link className="w-100 text-decoration-none" to="/events?eventType=1"><button onClick={() => this.handleClickNav(1)} className={`btn btn-block no-border-radius ` + (eventNavActive === 1 ? 'btn-theme' : 'btn-secondary')}>Upcoming <span className="d-md-inline-block d-none">Events</span></button></Link>
+                                <Link className="w-100 text-decoration-none" to="/events?eventType=2"><button onClick={() => this.handleClickNav(2)} className={`btn btn-block no-border-radius ` + (eventNavActive === 2 ? 'btn-theme' : 'btn-secondary')}>Past <span className="d-md-inline-block d-none">Events</span></button></Link>
                             </ButtonGroup>
                         </div>
                     </div>

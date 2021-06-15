@@ -12,10 +12,8 @@ import { startLoading, stopLoading } from './../../actions';
 import { EventRegistrationService, MailService } from './../../commons/api.service';
 import { convertIntegerToCurrency } from './../../commons/utilities';
 import FormGroup from './../utils/FormGroup';
-import { eventRegistration } from './../../commons/validation';
+import { eventRegistrationCorporateMail } from './../../commons/validation';
 
-const companyTypeOptions = [{id: 1, name: 'BUMN'}, {id: 2, name: 'Swasta'}]
-const educationOptions = [{id: 1, name: 'D3'}, {id: 2, name: 'S1'}, {id: 3, name: 'S2'}, {id: 4, name: 'S3'}]
 export default class ModalRegister extends Component {
     constructor(props) {
         super(props);
@@ -60,7 +58,7 @@ export default class ModalRegister extends Component {
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
 
     doRegister = () => {
-        if (eventRegistration(this.state)) {
+        if (eventRegistrationCorporateMail(this.state)) {
             store.dispatch(startLoading('Register . . .'));
             EventRegistrationService.create(this.state)
             .then((res) => {

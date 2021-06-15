@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { Navbar, Nav } from 'react-bootstrap';
 
+import { ROOT_URL } from './../commons/config'
+
 import './styles.css';
+
 
 class Navigation extends Component {
 	handleNav = () => {
@@ -46,7 +48,7 @@ class Navigation extends Component {
 		return (
 			<Navbar id="nav" fixed="top" variant="dark" expand="lg">
 				<div className="container">
-					<Navbar.Brand size="small" href="#home"><img src='./logo/smi_logo_small.png' alt="SMI Logo"/></Navbar.Brand>
+					<Navbar.Brand size="small" href="#home"><img src={`${ROOT_URL}/logo/smi_logo_small.png`} alt="SMI Logo"/></Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto text-uppercase small">
